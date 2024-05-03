@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class CounterScreen extends StatefulWidget {
-
   const CounterScreen({super.key});
 
   @override
@@ -11,28 +8,32 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  int clickCounter = 0;
+  int contador = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("$clickCounter", style: const TextStyle(fontSize: 160, fontWeight: FontWeight.w100)),
-            const Text("Clicks", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w100)),
-          ],
-        )
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Counter'),
+        ),
+        body: Center(
+          child: Text(
+            'Contador: $contador',
+            style: const TextStyle(
+              fontSize: 25
+            ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              contador++;
+            });
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            clickCounter++;
-          });
-        },
-        child: Icon(Icons.plus_one),
-      )
     );
   }
 }
